@@ -1,103 +1,101 @@
 @charset "UTF-8";
 
 body {
-    background-color: rgb(70, 142, 236);
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #467EEC;
+    font-family: "Arial", "Helvetica", sans-serif;
     font-size: 1.3em;
+    margin: 0;
+    padding: 0;
 }
 
-header {
-    background-color: rgb(70, 142, 236); /* Mesma cor do fundo */
-    color: white;
-    padding: 20px;
+.header {
+    background-color: #467EEC;
     text-align: center;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-section {
+.header-title {
+    color: white;
+    font-size: 2em;
+    margin: 0;
+}
+
+.quiz-section {
     background-color: white;
     border-radius: 10px;
-    padding: 15px;
-    width: 500px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
     margin: auto;
-    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.445);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
     margin-top: 20px;
 }
 
-footer {
-    background-color: rgb(70, 142, 236); /* Mesma cor do fundo */
-    color: white;
-    text-align: center;
-    font-style: italic;
-    padding: 10px;
+.section-title {
+    font-size: 1.5em;
+    margin: 0;
 }
 
-button {
-    background-color: #007bff;
+.choices-list {
+    list-style: none;
+    padding: 0;
+}
+
+.choices-list button {
+    background-color: #467EEC;
+    color: white;
     border: none;
     border-radius: 5px;
-    color: #fff;
+    padding: 10px 0; /* Defina a largura desejada aqui */
+    margin: 5px;
     cursor: pointer;
-    padding: 15px 30px;
-    font-size: 1em;
     transition: background-color 0.3s;
+    text-align: center; /* Centralize o texto no botão */
+    width: 500px; /* Defina a largura desejada aqui */
+    font-size: 1.2em;
 }
 
-button:hover {
-    background-color: #0056b3;
+.choices-list button:hover {
+    background-color: #3551A6;
 }
 
-label {
-    display: block;
-    margin: 10px 0;
-    padding: 15px;
-    border: 2px solid #007bff;
+.result-section {
+    display: none;
+}
+
+.result-text {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.restart-button {
+    background-color: #467EEC;
+    color: white;
+    border: none;
     border-radius: 5px;
+    padding: 10px 0; /* Defina a largura desejada aqui */
+    margin: 10px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center; /* Centralize o texto no botão */
+    width: 150px; /* Defina a largura desejada aqui */
+}
+
+.restart-button:hover {
+    background-color: #3551A6;
+}
+
+.footer {
+    background-color: #467EEC;
     text-align: center;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    background-color: #fff;
-    color: #007bff;
+    color: white;
+    padding: 10px;
+    font-style: italic;
+    margin-top: 20px;
 }
 
-label:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-input[type="radio"] + label {
-    position: relative;
-}
-
-input[type="radio"]:checked + label {
-    background-color: #007bff;
-    color: #fff;
-    border-color: #007bff;
-}
-
-input[type="radio"]:checked + label::before {
-    content: '✔';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5em;
-}
-
-#result-container {
-    display: none;
-    text-align: center;
-}
-
-.correct-answer {
-    background-color: #4CAF50;
-    border-color: #4CAF50;
-}
-
-.wrong-answer {
-    background-color: #FF5722;
-    border-color: #FF5722;
+.footer-text {
+    margin: 0;
 }

@@ -1,124 +1,182 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const welcomeContainer = document.getElementById("welcome-container");
+let currentQuestion = 0;
+let score = 0;
+
+const questions = [
+    {
+        question: "Qual é a principal forma de transmissão da COVID-19?",
+        choices: [
+            "Contato com superfícies contaminadas",
+            "Transmissão pelo ar",
+            "Insetos vetores",
+            "Água contaminada"
+        ],
+        correctAnswer: "Transmissão pelo ar"
+    },
+    {
+        question: "Quais são os sintomas mais comuns da COVID-19?",
+        choices: [
+            "Dor de estômago e febre alta",
+            "Febre, tosse seca, perda de paladar e olfato",
+            "Dor nas costas e dor de cabeça",
+            "Erupção cutânea e náuseas"
+        ],
+        correctAnswer: "Febre, tosse seca, perda de paladar e olfato"
+    },
+    {
+        question: "O uso de máscaras faciais é recomendado para quê?",
+        choices: [
+            "Proteger os olhos",
+            "Evitar a transmissão de vírus",
+            "Manter o rosto aquecido",
+            "Prevenir o câncer de pele"
+        ],
+        correctAnswer: "Evitar a transmissão de vírus"
+    },
+    {
+        question: "O que significa 'quarentena'?",
+        choices: [
+            "Um filme de ação",
+            "Ficar em casa por 40 dias",
+            "Isolamento de pessoas doentes",
+            "Um período de 14 dias de isolamento para prevenir a propagação da doença"
+        ],
+        correctAnswer: "Um período de 14 dias de isolamento para prevenir a propagação da doença"
+    },
+    {
+        question: "Qual grupo de idade tem maior risco de complicações graves pela COVID-19?",
+        choices: [
+            "Crianças",
+            "Pessoas jovens e saudáveis",
+            "Pessoas idosas",
+            "Adolescentes"
+        ],
+        correctAnswer: "Pessoas idosas"
+    },
+    {
+        question: "Qual é a importância da lavagem frequente das mãos na prevenção da COVID-19?",
+        choices: [
+            "Manter as mãos quentes",
+            "Eliminar vírus e bactérias",
+            "Deixar a pele mais macia",
+            "Prevenir dores de cabeça"
+        ],
+        correctAnswer: "Eliminar vírus e bactérias"
+    },
+    {
+        question: "Qual é a distância recomendada para o distanciamento social?",
+        choices: [
+            "1 metro",
+            "3 metros",
+            "5 centímetros",
+            "2 metros"
+        ],
+        correctAnswer: "2 metros"
+    },
+    {
+        question: "O que é um sintoma comum da COVID-19 em relação à respiração?",
+        choices: [
+            "Respiração mais fácil",
+            "Dificuldade para respirar",
+            "Aumento do apetite",
+            "Cansaço extremo"
+        ],
+        correctAnswer: "Dificuldade para respirar"
+    },
+    {
+        question: "Qual é o nome das vacinas que foram desenvolvidas para prevenir a COVID-19?",
+        choices: [
+            "CovidShield e Covaxin",
+            "Vaxzevria e Coronavac",
+            "Pfizer-BioNTech e Moderna",
+            "Tylenol e Advil"
+        ],
+        correctAnswer: "Pfizer-BioNTech e Moderna"
+    },
+    {
+        question: "Quando a pandemia de COVID-19 foi oficialmente declarada pela OMS?",
+        choices: [
+            "Janeiro de 2020",
+            "Março de 2020",
+            "Dezembro de 2019",
+            "Abril de 2020"
+        ],
+        correctAnswer: "Março de 2020"
+    }
+    // Adicione mais perguntas aqui
+];
+
+
+function displayQuestion() {
+    const questionElement = document.getElementById("question");
+    const choicesElement = document.getElementById("choices");
+
+    if (currentQuestion < questions.length) {
+        questionElement.textContent = `Pergunta ${currentQuestion + 1}: ${questions[currentQuestion].question}`;
+        choicesElement.innerHTML = "";
+
+        questions[currentQuestion].choices.forEach(choice => {
+            const button = document.createElement("button");
+            button.textContent = choice;
+            button.onclick = () => checkAnswer(choice);
+            choicesElement.appendChild(document.createElement("li")).appendChild(button);
+        });
+    } else {
+        showResult();
+    }
+}
+
+function checkAnswer(answer) {
+    if (answer === questions[currentQuestion].correctAnswer) {
+        score++;
+    }
+    currentQuestion++;
+    displayQuestion();
+}
+
+function showResult() {
     const questionContainer = document.getElementById("question-container");
-    const startButton = document.getElementById("start-button");
     const resultContainer = document.getElementById("result-container");
-    const scoreElement = document.getElementById("score");
-    const answerFeedback = document.getElementById("answer-feedback");
-    const submitButton = document.getElementById("submit-button");
-    const restartButton = document.getElementById("restart-button");
+    const resultElement = document.getElementById("result");
 
-    let score = 0;
-    let currentQuestionIndex = 0;
+    questionContainer.style.display = "none";
+    resultContainer.style.display = "block";
 
-    const questions = [
-        {
-            question: "Qual é a capital do Brasil?",
-            answers: [
-                { text: "Rio de Janeiro", correct: false },
-                { text: "São Paulo", correct: false },
-                { text: "Brasília", correct: true },
-                { text: "Salvador", correct: false }
-            ]
-        },
-        {
-            question: "Qual é o maior planeta do sistema solar?",
-            answers: [
-                { text: "Vênus", correct: false },
-                { text: "Terra", correct: false },
-                { text: "Júpiter", correct: true },
-                { text: "Marte", correct: false }
-            ]
-        }
-    ];
+    resultElement.textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
+}
 
-    // Função para exibir a próxima pergunta
-    function showQuestion() {
-        if (currentQuestionIndex < questions.length) {
-            const currentQuestion = questions[currentQuestionIndex];
-            const questionElement = document.getElementById("question");
-            const optionsElement = document.getElementById("options");
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        const questionContainer = document.getElementById("question-container");
+        const resultContainer = document.getElementById("result-container");
 
-            questionElement.querySelector("h2").textContent = `Pergunta ${currentQuestionIndex + 1}: ${currentQuestion.question}`;
-            optionsElement.innerHTML = "";
-
-            currentQuestion.answers.forEach((answer, index) => {
-                const label = document.createElement("label");
-                const input = document.createElement("input");
-                input.type = "radio";
-                input.name = "answer";
-                input.value = index;
-                label.appendChild(input);
-                label.appendChild(document.createTextNode(` ${answer.text}`));
-                optionsElement.appendChild(label);
-            });
-
-            submitButton.classList.remove("correct-answer", "wrong-answer");
-            answerFeedback.textContent = "";
-            submitButton.addEventListener("click", checkAnswer);
-        } else {
-            showResult();
-        }
-    }
-
-    // Função para verificar a resposta do usuário
-    function checkAnswer() {
-        const selectedOption = document.querySelector('input[name="answer"]:checked');
-
-        if (!selectedOption) {
-            return;
-        }
-
-        const selectedAnswerIndex = parseInt(selectedOption.value);
-        const currentQuestion = questions[currentQuestionIndex];
-
-        if (currentQuestion.answers[selectedAnswerIndex].correct) {
-            score++;
-            answerFeedback.textContent = "Resposta Correta!";
-        } else {
-            answerFeedback.textContent = "Resposta Errada!";
-        }
-
-        const optionsLabels = document.querySelectorAll('input[name="answer"] + label');
-        optionsLabels[selectedAnswerIndex].classList.add(
-            currentQuestion.answers[selectedAnswerIndex].correct ? "correct-answer" : "wrong-answer"
-        );
-
-        currentQuestionIndex++;
-
-        // Adicione este trecho para verificar se há mais perguntas
-        if (currentQuestionIndex < questions.length) {
-            showQuestion();
-        } else {
-            showResult();
-        }
-    }
-
-    // Função para exibir o resultado do quiz
-    function showResult() {
-        questionContainer.style.display = "none";
-        resultContainer.styledisplay = "block"; // Corrigido "style display" para "style.display"
-        scoreElement.textContent = score;
-        restartButton.style.display = "block";
-        submitButton.removeEventListener("click", checkAnswer);
-    }
-
-    // Função para recomeçar o quiz
-    function restartQuiz() {
-        currentQuestionIndex = 0;
-        score = 0;
-        showQuestion();
-        resultContainer.style.display = "none";
-        restartButton.style.display = "none";
-        answerFeedback.textContent = "";
-    }
-
-    // Adicionando eventos aos botões
-    startButton.addEventListener("click", function () {
-        welcomeContainer.style.display = "none";
         questionContainer.style.display = "block";
-        showQuestion();
-    });
+        resultContainer.style.display = "none";
 
-    restartButton.addEventListener("click", restartQuiz);
-});
+        displayQuestion();
+    }
+}
+function returnToStart() {
+    currentQuestion = 0; // Define a pergunta atual de volta para 0.
+    score = 0; // Reinicia a pontuação.
+    displayQuestion(); // Mostra a primeira pergunta.
+    
+    const questionContainer = document.getElementById("question-container");
+    const resultContainer = document.getElementById("result-container");
+
+    questionContainer.style.display = "block";
+    resultContainer.style.display = "none";
+}
+
+function startQuiz() {
+    const startScreen = document.getElementById("start-screen");
+    const quizScreen = document.getElementById("quiz-screen");
+
+    startScreen.style.display = "none";
+    quizScreen.style.display = "block";
+
+    displayQuestion();
+}
+
+
+displayQuestion();

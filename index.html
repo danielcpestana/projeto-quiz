@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quiz</h1>
+    </header>
+    <main>
+        <section id="welcome-container">
+            <h2>Bem-vindo ao Quiz!</h2>
+            <p>Clique no botão abaixo para começar.</p>
+            <button id="start-button">Iniciar Quiz</button>
+        </section>
+        <section id="question-container" style="display: none;">
+            <div id="question">
+                <h2></h2>
+                <div id="options">
+                </div>
+                <button id="submit-button">Enviar Resposta</button>
+            </div>
+            <div id="result-container" style="display: none;">
+                <h2>Resultado:</h2>
+                <p>Sua Pontuação: <span id="score">0</span></p>
+                <p id="answer-feedback"></p>
+                <button id="restart-button">Recomeçar</button>
+            </div>
+            
+        </section>
+    </main>
+    <footer>
+        <p>&copy; Daniel Pestana</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

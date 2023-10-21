@@ -1,89 +1,137 @@
 @charset "UTF-8";
 
 body {
-    background-color: #467EEC;
-    font-family: "Arial", "Helvetica", sans-serif;
-    font-size: 1.3em;
-    margin: 0;
-    padding: 0;
+    background-color: #F03E1F; /* Define a cor de fundo do corpo da página. */
+    font-family: "Arial", "Helvetica", sans-serif; /* Define a fonte usada no corpo do texto. */
+    font-size: 1.3em; /* Define o tamanho da fonte. */
+    margin: 0; /* Remove margens nas laterais do corpo da página. */
+    padding: 0; /* Remove preenchimento interno no corpo da página. */
 }
 
 .header {
-    background-color: #467EEC;
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #8A5349; /* Define a cor de fundo da seção de cabeçalho. */
+    text-align: center; /* Centraliza o texto no cabeçalho. */
+    padding: 10px; /* Adiciona preenchimento interno no cabeçalho. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra à seção de cabeçalho. */
 }
 
 .header-title {
-    color: white;
-    font-size: 2em;
-    margin: 0;
+    color: white; /* Define a cor do texto no cabeçalho como branco. */
+    font-size: 2em; /* Define o tamanho da fonte do título no cabeçalho. */
+    margin: 0; /* Remove margens em torno do título. */
 }
 
 .quiz-section {
-    background-color: white;
-    border-radius: 10px;
+    background-color: white; /* Define a cor de fundo das seções do quiz. */
+    border-radius: 10px; /* Adiciona bordas arredondadas às seções. */
+    padding: 20px; /* Adiciona preenchimento interno nas seções. */
+    width: 80%; /* Define a largura das seções em relação ao contêiner pai. */
+    max-width: 600px; /* Define a largura máxima das seções. */
+    margin: auto; /* Centraliza as seções horizontalmente. */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra às seções. */
+    text-align: center; /* Centraliza o texto nas seções. */
+    margin-top: 20px; /* Adiciona uma margem superior. */
+}
+
+/* Adicione essas regras CSS para estilizar o botão de início */
+.start-button {
+    background-color: #8A5349; /* Cor de fundo verde */
+    color: white; /* Cor do texto branca */
+    border: none; /* Remove as bordas do botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 15px 30px; /* Espaçamento interno maior */
+    cursor: pointer; /* Cursor do mouse como "mão" */
+    font-size: 1.3em; /* Tamanho da fonte aumentado */
+    transition: background-color 0.3s; /* Transição suave na cor de fundo */
+}
+
+.start-button:hover {
+    background-color: #332D2C; /* Cor de fundo mais escura ao passar o mouse */
+}
+
+
+.section-title {
+    font-size: 1.5em; /* Define o tamanho da fonte dos títulos de seção. */
+    margin: 0; /* Remove margens em torno dos títulos. */
+}
+
+.choices-list {
+    list-style: none; /* Remove os marcadores de lista das opções de resposta. */
+    padding: 0; /* Remove o preenchimento padrão das listas. */
+}
+
+.choices-list button {
+    background-color: #8A5349; /* Define a cor de fundo dos botões de escolha. */
+    color: white; /* Define a cor do texto nos botões. */
+    border: none; /* Remove as bordas dos botões. */
+    border-radius: 5px; /* Adiciona bordas arredondadas aos botões. */
+    padding: 10px 0; /* Define o preenchimento dos botões (altura). */
+    margin: 5px; /* Define margens entre os botões. */
+    cursor: pointer; /* Define o cursor do mouse como "mão" para indicar que os botões são clicáveis. */
+    transition: background-color 0.3s; /* Adiciona uma transição suave ao alterar a cor de fundo. */
+    text-align: center; /* Centraliza o texto nos botões. */
+    width: 500px; /* Define a largura dos botões. */
+    font-size: 1.2em; /* Define o tamanho da fonte nos botões. */
+}
+
+.choices-list button:hover {
+    background-color: #332D2C; /* Altera a cor de fundo dos botões quando o mouse passa por cima. */
+}
+
+.next-button {
+    background-color: #8A5349;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 1em;
+}
+
+.next-button:hover {
+    background-color: #332D2C;
+}
+
+
+/* Resultado CSS */
+
+.result-section {
+    display: none;
+    background-color: white; /* Fundo branco para a seção de resultado */
     padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    margin: auto;
+    border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 20px;
 }
 
-.section-title {
-    font-size: 1.5em;
-    margin: 0;
-}
-
-.choices-list {
-    list-style: none;
-    padding: 0;
-}
-
-.choices-list button {
-    background-color: #467EEC;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 0; /* Defina a largura desejada aqui */
-    margin: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-align: center; /* Centralize o texto no botão */
-    width: 500px; /* Defina a largura desejada aqui */
-    font-size: 1.2em;
-}
-
-.choices-list button:hover {
-    background-color: #3551A6;
-}
-
-.result-section {
-    display: none;
-}
-
 .result-text {
-    font-size: 1.2em;
+    font-size: 1.5em; /* Aumentar o tamanho da fonte para o resultado */
     margin: 0;
+    color: black; /* Cor azul para o texto do resultado */
 }
 
 .restart-button {
-    background-color: #467EEC;
+    background-color: #8A5349;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 0; /* Defina a largura desejada aqui */
-    margin: 10px;
+    padding: 10px 20px; /* Aumentar o espaçamento interno do botão */
+    margin-top: 15px; /* Aumentar a margem superior para separar o botão do texto */
     cursor: pointer;
     transition: background-color 0.3s;
-    text-align: center; /* Centralize o texto no botão */
-    width: 150px; /* Defina a largura desejada aqui */
+    font-size: 1.2em;
 }
 
 .restart-button:hover {
-    background-color: #3551A6;
+    background-color: #332D2C;
 }
 
+.result-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

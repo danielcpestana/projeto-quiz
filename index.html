@@ -7,28 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <header class="header">
         <h1 class="header-title">Quiz</h1>
     </header>
+
     <main>
         <section id="start-screen" class="quiz-section">
+            <img src="imagens/23312-1024x576.png" alt="Imagem Inicial" width="100%">
             <h2 class="section-title">Bem-vindo ao Quiz!</h2>
             <p>Clique no botão abaixo para começar.</p>
-            <button class="start-button" onclick="startQuiz()">Iniciar</button>
+            <button class="start-button" id="start-button" onclick="startQuiz()">Iniciar</button>
         </section>
+
         <section id="quiz-screen" class="quiz-section" style="display: none;">
+            
             <div id="question-container">
+                <img src="imagens/23312-1024x576.png" alt="Imagem Inicial" width="100%">
                 <h2 id="question" class="question-title"></h2>
                 <ul id="choices" class="choices-list">
                 </ul>
+                <p id="incorrect-answer" style="color: red;"></p>
+                <div id="explanation-container" style="display: none;"></div>
             </div>
-            <div id="result-container" class="result-section" style="display: none;">
-                <p id="result" class="result-text"></p>
-                <button class="restart-button" onclick="returnToStart()">Recomeçar</button>
-            </div>
+            <button class="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
         </section>
+       
     </main>
-   
+    
     <script src="script.js"></script>
 </body>
 </html>
